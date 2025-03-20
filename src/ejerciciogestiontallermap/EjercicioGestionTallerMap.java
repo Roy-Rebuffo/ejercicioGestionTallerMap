@@ -29,6 +29,13 @@ public class EjercicioGestionTallerMap {
         vehiculo.entrySet().forEach((m) -> {
             System.out.println("VALOR->" + m.getValue() + "\n" + "CLAVE->" + m.getKey());
         });
+        
+        /*
+        //Visualizar con mapEntry
+        for(Map.Entry<Vehiculo, Integer> e : vehiculo.entrySet()){
+            System.out.println(e.getKey()+ "\t" + e.getValue());
+        }
+        */
     }
 
     public static void ceilingEntry(TreeMap<Vehiculo, Integer> vehiculo) {
@@ -78,13 +85,16 @@ public class EjercicioGestionTallerMap {
 
         for (Map.Entry<Vehiculo, Integer> m : vehiculo.entrySet()) {
             Vehiculo vehiculoKey = m.getKey(); // Obtenemos la clave (Vehiculo)
-            Integer vehiculoValue = m.getValue();
+            Integer vehiculoValue = m.getValue(); //Obtenemos el valor
 
             // Comprobamos si la matrícula del vehículo coincide
             if (vehiculoKey.getMatricula().equalsIgnoreCase(matricula)) {
                 // Si el vehículo existe, incrementar el número de reparaciones
                 //vehiculoValue;
                 vehiculoValue ++;
+                // Actualizamos el valor del vehículo en el TreeMap
+                vehiculo.replace(vehiculoKey, vehiculoValue);
+                
                 System.out.println("¡Vehículo encontrado! Incrementamos el número de reparaciones del vehículo '"
                         + vehiculoKey.getMarca() + " " + vehiculoKey.getModelo() + "' con matrícula '"
                         + vehiculoKey.getMatricula() + "' a: " + vehiculoValue);
@@ -105,7 +115,7 @@ public class EjercicioGestionTallerMap {
 
             // Añadir el nuevo vehículo a la lista
             Vehiculo nuevoVehiculo = new Vehiculo(matricula, marca, modelo, fechaMatr);
-            vehiculo.put(nuevoVehiculo,5);
+            vehiculo.put(nuevoVehiculo,1);
             System.out.println("¡Nuevo coche añadido al taller!");
         }
     }
@@ -120,10 +130,10 @@ public class EjercicioGestionTallerMap {
         Vehiculo v3 = new Vehiculo("1234ABC", "Paganni", "Zonda", "2008");
         Vehiculo v4 = new Vehiculo("4321CBA", "Ferrari", "Enzo", "2006");
 
-        vehiculo.put(v1, 4);
-        vehiculo.put(v2, 3);
-        vehiculo.put(v3, 6);
-        vehiculo.put(v4, 2);
+        vehiculo.put(v1, 1);
+        vehiculo.put(v2, 1);
+        vehiculo.put(v3, 1);
+        vehiculo.put(v4, 1);
 
         Scanner dato = new Scanner(System.in);
         int opcion = -1;
